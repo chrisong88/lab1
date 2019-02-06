@@ -44,7 +44,7 @@ exercise2 is a function that returns 42 (instead of failing). When you
 submit, the Exercise 2 unit test should then pass.
 ......................................................................*)
 
-let exercise2 () = failwith "exercise2 not implemented" ;;
+let exercise2 () = 42 ;;
 
 (* From here on, you'll want to test your lab solutions locally before
 submitting them at the end of lab to Gradescope. A simple way to do that
@@ -101,7 +101,7 @@ appropriate OCaml expression to assign the value to the variable
 exercise1 below.
 ......................................................................*)
 
-let exercise3 () = failwith "exercise3 not implemented" ;;
+let exercise3 () = "3 - 5" ;;
 
 (* Hint: The OCaml concrete expression
 
@@ -114,6 +114,19 @@ Exercise 4: Draw the tree that the concrete syntax "~- 5 - 3" does
 correspond to. Check it with a member of the course staff if you'd
 like.
 ......................................................................*)
+
+(*
+
+      -
+      ^
+     / \
+    /   \
+  ~-     3
+  /
+ /
+5
+
+*)
 
 
 (*......................................................................
@@ -138,6 +151,19 @@ the operator. Check your answer with a member of the course staff if
 you'd like.
 ......................................................................*)
 
+(*
+
+"5 - 3 - 1" is dependent on the associativity of the operator and can be interpreted as
+
+(5 - 3) - 1 => 1
+or
+5 - (3 - 1) => 3
+
+OCaml has associativity from the left, therefore the aforementioned expression will evaluate
+to the first of the two interpretations.
+
+*)
+
 (*======================================================================
 Part 2: Types and type inference
 
@@ -148,25 +174,20 @@ expressions below? Test your solution by uncommenting the examples
 error is generated.
 ......................................................................*)
 
-(*  <--- After you've replaced the ???s, remove this start of comment line
+let exercise6a : int = 42 ;;
 
-let exercise6a : ??? = 42 ;;
-
-let exercise6b : ??? =
+let exercise6b : string =
   let greet y = "Hello " ^ y
   in greet "World!";;
 
-let exercise6c : ??? =
+let exercise6c : float =
   fun x -> x +. 11.1 ;;
 
-let exercise6d : ??? =
+let exercise6d : bool =
   fun x -> x < x + 1 ;;
 
-let exercise6e : ??? =
+let exercise6e : fun =
   fun x -> fun y -> x + int_of_float y ;;
-
-
-and remove this whole end of comment line too. ---->  *)
 
 (*======================================================================
 Part 3: First-order functional programming
