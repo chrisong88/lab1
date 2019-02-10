@@ -180,13 +180,13 @@ let exercise6b : string =
   let greet y = "Hello " ^ y
   in greet "World!";;
 
-let exercise6c : float =
+let exercise6c : float -> float =
   fun x -> x +. 11.1 ;;
 
-let exercise6d : bool =
+let exercise6d : int -> bool =
   fun x -> x < x + 1 ;;
 
-let exercise6e : fun =
+let exercise6e : int -> float -> int =
   fun x -> fun y -> x + int_of_float y ;;
 
 (*======================================================================
