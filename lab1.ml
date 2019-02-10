@@ -218,9 +218,9 @@ functions in the lab to get some practice with automated unit testing.
 ......................................................................*)
 
 let square (x : int) : int  =
-  failwith "square not implemented" ;;
+  x * x ;;
 
-let exercise7 = 0 ;;
+let exercise7 = square 5 ;;
 
 (*......................................................................
 Exercise 8: Define a function say_hello that, given a name, creates a
@@ -239,7 +239,9 @@ to the function.
 ......................................................................*)
 
 let say_hello (name : string) : string =
-  failwith "say_hello not implemented";;
+  "Hi " ^ name ^ ". "
+  ^ (if name = "Gabby" || name = "gabby" then "Welcome home! " else "")
+  ^ "How are you today?"
 
 (*......................................................................
 Exercise 9: Define a function, small_bills, that determines, given a
@@ -252,7 +254,8 @@ integers. For this lab, you may assume all prices given are
 non-negative.
 ......................................................................*)
 let small_bills (price : int) : bool =
-  failwith "small_bills not implemented" ;;
+  let cut_offsize = 20 in
+  (price mod cut_offsize) <> 0 ;;
 
 (*......................................................................
 Exercise 10:
@@ -301,9 +304,11 @@ this exercise, you may assume all inputs will be positive.
 
 ......................................................................*)
 
-let factorial (x : int) : int =
-  failwith "factorial not implementated" ;;
-
+let rec factorial (x : int) : int =
+  if x < 0 then raise (Invalid_argument "input must be non-negative")
+  else if x = 0 then 1
+  else x * factorial (x - 1) ;; 
+  
 (*......................................................................
 Exercise 12: Define a recursive function that sums all the elements
 between 0 and the input.
@@ -320,5 +325,6 @@ the mathematician Carl Freiedrich Gauss as a seven-year-old, *in his
 head*!)
 ......................................................................*)
 
-let sum_from_zero (x : int) : int =
-  failwith "sum_from_zero not implemented" ;;
+let rec sum_from_zero (x : int) : int =
+  if x = 0 then 0
+  else x + sum_from_zero (if x < 0 then succ x else pred x) ;;
